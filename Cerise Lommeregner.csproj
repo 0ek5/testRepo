@@ -154,9 +154,6 @@
     <Folder Include="Theme\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Screenshot_20230814_101726_Gallery - Kopi.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="CherryClick.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
