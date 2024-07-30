@@ -196,13 +196,13 @@
 
                             <ComboBox.ItemContainerStyle>
                                 <Style TargetType="ComboBoxItem">
-                                    <Setter Property="Background" Value="#fff4e6"/>
+                                    <Setter Property="Background" Value="#a71515"/>
                                     <Setter Property="BorderThickness" Value="1"/>
-                                    <Setter Property="BorderBrush" Value="#542e3d"/>
+                                    <Setter Property="BorderBrush" Value="#a71515"/>
                                 </Style>
                             </ComboBox.ItemContainerStyle>
 
-                            <ComboBoxItem Content="EUR" Background="#fff4e6"/>
+                            <ComboBoxItem Content="EUR" Background="#a71515"/>
                             <ComboBoxItem Content="USD" Background="#fff4e6"/>
                             <ComboBoxItem Content="GBP" Background="#fff4e6"/>
                             <ComboBoxItem x:Name="comboBoxItem" Content="DKK" Background="#fff4e6"/>

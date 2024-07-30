@@ -31,7 +31,7 @@ namespace Cerise_Lommeregner
 
         private void txtPris_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (txtPris.Text == "Indtast Pris" || txtPris.Text == "Webpris")
+            if (txtPris.Text == "Add price" || txtPris.Text == "Webprice")
             {
                 txtPris.Text = "";
                 txtPris.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#542e3d"));
@@ -274,12 +274,17 @@ namespace Cerise_Lommeregner
 
             Total.Opacity = 0.7;
             UdenMoms.Opacity = 0.7;
-            Total.Text = "Kostpris: ";
-            Totalmoms.Text = "Webpris: ";
+            Total.Text = "Kost pris: ";
+            Totalmoms.Text = "Web pris: ";
             Copyright.Margin = new Thickness(180, -20, 0, 0);
             MedMoms.Text = "";
-            txtPris.Text = "Indtast Pris";
-
+            txtPris.Text = "IndtastPris";
+            // TEXT TEST
+            // TEXT TEST// TEXT TEST
+            // TEXT TEST
+            // TEXT TEST
+            // TEXT TEST
+            // TEXT TEST
 
         }
         private void btnOff_Checked(object sender, RoutedEventArgs e)
@@ -313,3 +318,4 @@ namespace Cerise_Lommeregner
     }
 }
 
+//Dette er en test...
