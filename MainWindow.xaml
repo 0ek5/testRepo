@@ -1,0 +1,463 @@
+﻿<Window x:Class="Cerise_Lommeregner.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Cerise_Lommeregner"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        MouseDown="Window_MouseDown"
+        Background="Transparent"
+        AllowsTransparency="True"
+        KeyDown="Window_KeyDown"
+        KeyUp="Del_KeyDown"
+        Title="Cerise Lommeregner" Height="400" Width="300">
+
+
+    <Window.Resources>
+        <sys:String x:Key="InitialText">Intast Pris</sys:String>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <!--<SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>-->
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="ToggleButtonStyle1" TargetType="{x:Type ToggleButton}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true" CornerRadius="10,10,10,10">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Button.IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <!--<Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>-->
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <!--<Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>-->
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="FocusVisual1">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background1" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border1" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background1" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border1" Color="#FF3C7FB1"/>
+        <!--<SolidColorBrush x:Key="Button.Pressed.Background1" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border1" Color="#FF2C628B"/>-->
+        <SolidColorBrush x:Key="Button.Disabled.Background1" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border1" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground1" Color="#FF838383"/>
+        <Style x:Key="ToggleButtonStyle2" TargetType="{x:Type ToggleButton}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual1}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background1}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border1}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true" CornerRadius="0,0,0,0" Margin="0,0,10,8">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Button.IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <!--<Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background1}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border1}"/>-->
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <!--<Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background1}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border1}"/>-->
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background1}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border1}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground1}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+
+
+
+    <Border CornerRadius="50" RenderTransformOrigin="0.5,0.5" 
+            Height="400"
+            Width="300"
+            VerticalAlignment="Center">
+        <Border.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform/>
+                <RotateTransform/>
+            </TransformGroup>
+        </Border.RenderTransform>
+
+
+        <Border BorderThickness="5"
+            CornerRadius="40"
+            Opacity="1" Margin="0,0,0,61">
+
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#542e3d" Offset="0"/>
+                    <GradientStop Color="#642e3d" Offset="0.75"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="#fff4e6" Offset="0"/>
+                    <GradientStop Color="#fff4e6" Offset="0.75"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid Margin="6,0,0,0"
+                  x:Name="MainGrid">
+
+
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="2000"/>
+                    <RowDefinition Height="400"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="1">
+                    <Image Source="/Images/Logo.png"
+                           Opacity="0.7"
+                       Grid.Row="2"
+                        Margin="0,-20,0,15"   
+                       Height="159"
+                       Width="215"/>
+                    <Border BorderThickness="3"
+                            x:Name="Vis1"
+                            BorderBrush="#542e3d"
+                            Opacity="0.7"
+                            CornerRadius="1"
+                            Width="55"
+                            Height="25">
+                        <ComboBox x:Name="DropDownMenu"
+          Foreground="#542e3d"
+          Background="#fff4e6"                              
+          SelectionChanged="DropDownMenu_SelectionChanged"
+             BorderThickness="1"
+          SelectedItem="{Binding ElementName=comboBoxItem, Mode=OneWay}" Margin="-3,0,-3,0">
+
+                            <ComboBox.ItemContainerStyle>
+                                <Style TargetType="ComboBoxItem">
+                                    <Setter Property="Background" Value="#fff4e6"/>
+                                    <Setter Property="BorderThickness" Value="1"/>
+                                    <Setter Property="BorderBrush" Value="#542e3d"/>
+                                </Style>
+                            </ComboBox.ItemContainerStyle>
+
+                            <ComboBoxItem Content="EUR" Background="#fff4e6"/>
+                            <ComboBoxItem Content="USD" Background="#fff4e6"/>
+                            <ComboBoxItem Content="GBP" Background="#fff4e6"/>
+                            <ComboBoxItem x:Name="comboBoxItem" Content="DKK" Background="#fff4e6"/>
+                        </ComboBox>
+                    </Border>
+                    <Border BorderThickness="3"
+                        x:Name="Vis2"
+                            Visibility="Collapsed"
+                        BorderBrush="#542e3d"
+                        Opacity="0.7"
+                        CornerRadius="1"
+                        Width="56"
+                        Height="25">
+                        <ComboBox x:Name="DropDownMenu1"
+                            Foreground="#542e3d"
+                            Background="#fff4e6"                              
+                            SelectionChanged="DropDownMenu_SelectionChanged"
+                            BorderThickness="1"
+                            SelectedItem="{Binding ElementName=comboBoxItem, Mode=OneWay}" Margin="-3,0,-3,0">
+
+                            <ComboBox.ItemContainerStyle>
+                                <Style TargetType="{x:Type ComboBoxItem}">
+                                    <Setter Property="Background" Value="#fff4e6"/>
+                                    <Setter Property="BorderThickness" Value="1"/>
+                                    <Setter Property="BorderBrush" Value="#542e3d"/>
+                                </Style>
+                            </ComboBox.ItemContainerStyle>
+
+                            <ComboBoxItem Content="EUR" Background="#fff4e6"/>
+                            <ComboBoxItem Content="USD" Background="#fff4e6"/>
+                            <ComboBoxItem Content="GBP" Background="#fff4e6"/>
+                            <ComboBoxItem x:Name="comboBoxItem1" Content="DKK" Background="#fff4e6"/>
+                        </ComboBox>
+                    </Border>
+
+
+
+
+                    <Border Opacity="0.7">
+                        <Border.BorderBrush>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#542e3d" Offset="0"/>
+                                <GradientStop Color="#542e3d" Offset="0.75"/>
+                            </LinearGradientBrush>
+                        </Border.BorderBrush>
+                        <Border.BorderThickness>2</Border.BorderThickness>
+                        <Border.CornerRadius>5</Border.CornerRadius>
+                        <Border.Background>Transparent</Border.Background>
+                        <Border.Margin>0,5,0,0</Border.Margin>
+                        <Border.VerticalAlignment>Center</Border.VerticalAlignment>
+                        <Border.HorizontalAlignment>Center</Border.HorizontalAlignment>
+                        <TextBox x:Name="txtPris"
+                                 Opacity="1"
+             Background="Transparent"
+             Text="Indtast Pris"
+             Foreground="#542e3d"
+             Height="20"
+             Width="100"
+             FontSize="16"
+                                 BorderThickness="0"
+             VerticalContentAlignment="Center"
+             HorizontalContentAlignment="Center"
+             GotFocus="txtPris_GotFocus"
+             LostFocus="txtPris_LostFocus"/>
+                    </Border>
+
+
+
+
+
+
+
+
+
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="left"
+                                x:Name="KostPanel">
+
+                        <TextBlock x:Name="Total"
+                               Text="Kostpris: "
+                               FontSize="16"
+                                                                      Opacity="0.7"
+
+                                   Foreground="#542e3d"
+                               HorizontalAlignment="Left"
+                               Margin="52.3,0,0,0"/>
+
+                        <TextBlock x:Name="UdenMoms"
+                               Text=""
+                                   Opacity="0.7"
+                                   Foreground="#542e3d"
+                               FontSize="16"
+                               HorizontalAlignment="Center"/>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Left">
+
+                        <TextBlock x:Name="Totalmoms"
+                                      Text="Webpris: "
+                                   Opacity="0.7"
+                                    Foreground="#542e3d"
+                                      FontSize="16"
+                                      Margin="50.7,0,0,0"/>
+
+                        <TextBlock x:Name="MedMoms"
+                                     Text=""
+                                    Foreground="#542e3d"
+                                     FontSize="16"
+                                                Opacity="0.7"
+                                     HorizontalAlignment="Center"/>
+
+
+
+                    </StackPanel>
+                    <StackPanel>
+                        <Image Source="\Images\Click.png" Height="50" Width="50"
+                               MouseDown="Image_MouseDown"                               
+                               x:Name="BowClick"
+                               HorizontalAlignment="Center"
+                               Margin="0,0,0,0"/>
+                        
+                        <Image Source="/Images/Click.png" Height="50" Width="50"
+                            MouseDown="BowClick1_MouseDown"
+                               x:Name="BowClick1"
+                               Visibility="Collapsed"
+                               />
+                        <TextBlock x:Name="Copyright"
+                                       Text="WayHigh©"
+                                       FontSize="12"
+                                       Opacity="0.3"
+                                       FontWeight="Medium"
+                                       Foreground="#542e3d"
+                                       Margin="180,-20,0,0" Width="63"/>
+                    </StackPanel>
+                </StackPanel>
+                <Grid Margin="0,0,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="25"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="btnMinimize"
+                            BorderThickness="0"
+                            Content="-"
+                            Opacity="0.7"
+                            Foreground="Ivory"
+                            FontSize="16"
+                            FontFamily="Montserrat"
+                            Cursor="Hand"
+                            Grid.Column="1"
+                            Click="BtnMinimize_Click" Margin="0,1,0,-1">
+
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="#542e3d"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#942e3d"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Width="18" Height="18"
+                                        CornerRadius="9"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+
+                    </Button>
+
+                    <Button x:Name="btnClose"
+                            BorderThickness="0"
+                            Content="x"
+                            Foreground="Ivory"
+                            Opacity="0.7"
+                            FontSize="16"
+                            FontFamily="Montserrat"
+                            Cursor="Hand"
+                            Grid.Column="2"
+                            Click="BtnClose_Click" Margin="0,1,0,-1">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="#542e3d"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#992e3d"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Width="18" Height="18"
+                                        CornerRadius="9"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+
+                </Grid>
+                <ToggleButton x:Name="btnOn" Style="{DynamicResource ToggleButtonStyle1}"
+                              HorizontalAlignment="Left" 
+                              Margin="29,0,0,0" 
+                              VerticalAlignment="Center" 
+                              BorderThickness="2" 
+                              Width="51"
+                              Height="28" 
+                              
+                              BorderBrush="#FF542E3D" 
+                              Checked="btnOn_Checked" 
+                              Unchecked="btnOn_Unchecked" 
+                              Opacity="0.7">
+                    <ToggleButton.Background>
+                        <ImageBrush Stretch="None"/>
+                    </ToggleButton.Background>
+                    <Grid Height="33" Width="49" RenderTransformOrigin="0.472,0.38">
+                        <DockPanel LastChildFill="False" Margin="-1,-4,-7,-1">
+                            <ToggleButton x:Name="btnOff" 
+                                          Style="{DynamicResource ToggleButtonStyle2}" 
+                                          Content="" BorderThickness="0,0,0,0" 
+                                          Unchecked="btnOff_Unchecked" 
+                                          Checked="btnOff_Checked"
+                                          Width="37" 
+                                          RenderTransformOrigin="1.238,0.339">
+                                <ToggleButton.Background>
+                                    <ImageBrush ImageSource="Images/CherryClick.png" 
+                                                Stretch="Uniform"/>
+                                </ToggleButton.Background>
+                            </ToggleButton>
+                        </DockPanel>
+                    </Grid>
+                </ToggleButton>
+
+
+
+
+
+            </Grid>
+
+        </Border>
+    </Border>
+</Window>
