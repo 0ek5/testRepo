@@ -313,3 +313,4 @@ namespace Cerise_Lommeregner
     }
 }
 
+//Dette er en test
