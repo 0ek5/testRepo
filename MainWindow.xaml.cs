@@ -31,7 +31,7 @@ namespace Cerise_Lommeregner
 
         private void txtPris_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (txtPris.Text == "Indtast Pris" || txtPris.Text == "Webpris")
+            if (txtPris.Text == "Add price" || txtPris.Text == "Webprice")
             {
                 txtPris.Text = "";
                 txtPris.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#542e3d"));
