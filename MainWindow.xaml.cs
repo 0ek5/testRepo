@@ -274,12 +274,17 @@ namespace Cerise_Lommeregner
 
             Total.Opacity = 0.7;
             UdenMoms.Opacity = 0.7;
-            Total.Text = "Kostpris: ";
-            Totalmoms.Text = "Webpris: ";
+            Total.Text = "Kost pris: ";
+            Totalmoms.Text = "Web pris: ";
             Copyright.Margin = new Thickness(180, -20, 0, 0);
             MedMoms.Text = "";
-            txtPris.Text = "Indtast Pris";
-
+            txtPris.Text = "IndtastPris";
+            // TEXT TEST
+            // TEXT TEST// TEXT TEST
+            // TEXT TEST
+            // TEXT TEST
+            // TEXT TEST
+            // TEXT TEST
 
         }
         private void btnOff_Checked(object sender, RoutedEventArgs e)
@@ -313,3 +318,4 @@ namespace Cerise_Lommeregner
     }
 }
 
+//Dette er en test...
