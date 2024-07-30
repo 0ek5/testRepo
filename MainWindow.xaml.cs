@@ -279,7 +279,12 @@ namespace Cerise_Lommeregner
             Copyright.Margin = new Thickness(180, -20, 0, 0);
             MedMoms.Text = "";
             txtPris.Text = "IndtastPris";
-
+            // TEXT TEST
+            // TEXT TEST// TEXT TEST
+            // TEXT TEST
+            // TEXT TEST
+            // TEXT TEST
+            // TEXT TEST
 
         }
         private void btnOff_Checked(object sender, RoutedEventArgs e)
